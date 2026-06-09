@@ -13,7 +13,7 @@ jobs:
       - run: echo "========================================"
       - run: echo "           Deployment Reciept           "
       - run: echo "========================================"
-      - run: echo 'Repository - ${{ github.repository }}''
+      - run: echo "Repository - ${{ github.repository }}"
       - run: echo "Branch - ${{ github.ref_name }}"
       - run: echo "Triggered by - ${{ github.actor }}"
       - run: echo "Event Type - ${{ github.event_name }} "
