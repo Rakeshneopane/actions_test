@@ -3,13 +3,18 @@ name: Calculator Deployment
 on: push
 
 jobs:
-  test:
+  reciept:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - run: echo " Runner name ${{ runner.name }} "
-      - run: echo "Hello ${{ github.actor }}"
-      - run: echo "You pushed to main- $(branch) from repository ${{ github.repository }}"
-      - run: echo "Current date and time $(date)"
+      - run: echo "========================================"
+      - run: echo "           Deployment Reciept          "
+      - run: echo "========================================"
+      - run: echo "Repository : ${{ github.repository }}"
+      - run: echo "Branch :  ${{ github.ref_name }}"
+      - run: echo "Triggered by : ${{ github.actor }}"
+      - run: echo "Event Type : ${{ github.event_name }} "
+      - run: echo "Timestamp : $(date)" 
+      - run: echo "========================================"
