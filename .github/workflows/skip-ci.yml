@@ -1,0 +1,16 @@
+name: Skippable CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Run step
+        run: echo "CI is running for commit ${{ github.sha }}"

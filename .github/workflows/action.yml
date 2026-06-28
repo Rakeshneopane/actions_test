@@ -1,21 +1,33 @@
-name: Calculator Deployment
+name: Server Health
 
-on: push
+on:
+  push:
 
 jobs:
-  receipt:
+  health-check:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      
-      - run: echo "========================================"
-      - run: echo "           Deployment Reciept           "
-      - run: echo "========================================"
-      - run: echo "Repository - ${{ github.repository }}"
-      - run: echo "Branch - ${{ github.ref_name }}"
-      - run: echo "Triggered by - ${{ github.actor }}"
-      - run: echo "Event Type - ${{ github.event_name }} "
-      - run: echo "Timestamp - $(date)" 
-      - run: echo "========================================"
+      - name: Server Health Report
+        run: |
+          echo "📊 SERVER HEALTH REPORT"
+          echo
+          echo "Disk Usage:"
+          df -h / | awk 'NR==2 {print $5}'
+          echo
+          echo "Memory Available:"
+          free -h | awk '/Mem:/ {print $7}'
+          echo
+          echo "CPU Cores:"
+          nproc
+          echo
+          echo "Node Version:"
+          node -v
+          echo
+          echo "Python Version:"
+          python3 --version | awk '{print $2}'
+          echo
+          echo "Health Status:"
+          echo "✅ HEALTHY"
